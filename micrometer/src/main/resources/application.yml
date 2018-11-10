@@ -1,0 +1,26 @@
+server.port: 18888
+management.security.enabled: false
+
+# see https://stackoverflow.com/questions/44474160/spring-integration-display-warning-that-header-is-ignored-for-population-because
+logging.level.org.springframework.integration.support.MessageBuilder: WARN
+logging.level.org.springframework.boot: INFO
+
+management.metrics:
+  enable:
+    jvm: false
+    tomcat: false
+    logback: false
+    process: false
+    system: false
+    spring: false
+  export:
+    datadog:
+      enabled: true
+      apiKey: 6051158f9fa816ae7bca4d6a9b07a05a
+      step: 10s
+      uri: http://10.181.12.12:28301/datadog
+      host-tag: wbg.example.com
+
+security.ignored: /**
+
+

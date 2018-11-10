@@ -1,0 +1,19 @@
+server:
+  port: 9411
+
+spring:
+  application:
+    name: zipkin-server
+  datasource:
+    url: jdbc:mysql://192.168.99.100:32768/zipkin?autoReconnect=true&useSSL=false
+    username: root
+    password: 654321
+    driver-class-name: com.mysql.jdbc.Driver
+    initialize: true
+    continue-on-error: true
+  sleuth:
+    enabled: false
+
+zipkin:
+  storage:
+      type: mysql

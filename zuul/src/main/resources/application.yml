@@ -1,0 +1,50 @@
+eureka:
+    client:
+        serviceUrl:
+            defaultZone: http://localhost:8761/eureka/
+
+server:
+    port: 60001
+    tomcat:
+        accept-count: 100000
+        max-connnetions: 100000
+        max-threads: 500
+        keepAliveTimeOut: 100
+        maxKeepAliveRequests: 1
+
+zuul:
+    retryable: true
+    host:
+        max-per-route-connections: 100000
+        max-total-connections: 1000000
+    semaphore:
+        max-semaphores: 10000
+    routes:
+        serviceA:
+            path: /hello/**
+            serviceId: serviceA
+            strip-prefix: false
+    AccessFilter:
+        pre:
+            disable: false
+    debug:
+        request: true        
+    include-debug-header: true
+
+hystrix:
+    command:
+      default:
+        execution:
+          timeout:
+            enabled: true
+          isolation:
+            thread:
+              timeoutInMilliseconds: 60000
+
+ribbon:
+    ConnectTimeout: 1000
+    ReadTimeout: 4000
+    MaxAutoRetriesNextServer: 0
+    MaxAutoRetries: 0
+    OkToRetryOnAllOperations: true
+

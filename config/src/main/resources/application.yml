@@ -1,0 +1,27 @@
+server:
+  port: 8090
+  session-timeout: 30
+  tomcat.max-threads: 5
+  tomcat.uri-encoding: UTF-8
+
+#security:
+#  user:
+#    name: user
+#    password: 37cc5635-559b-4e6f-b633-7e932b813f73
+
+spring:
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/caesar188/spring_cloud
+          username: caesar188
+          password: guhao520
+
+eureka:
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+
