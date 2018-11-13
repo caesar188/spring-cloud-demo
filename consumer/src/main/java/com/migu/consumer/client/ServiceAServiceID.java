@@ -24,7 +24,7 @@ public interface ServiceAServiceID  {
     @RequestMapping(value="/hello/get/{name}", method = RequestMethod.GET)
     String sayHello(@PathVariable("name") String name);
 
-    @Cacheable(value = {"names#30#5"},key = "#p0" ,unless = "#result.get('resultcode') eq '80000'")
+    @Cacheable(value = "names#${cache.customized.chapterinfo.expiration:100000}",key = "#p0" ,unless = "#result.get('resultcode') eq '80000'")
     @RequestMapping(value="/hello/post", method = RequestMethod.POST)
     Map sayHelloPost(@RequestBody String name);
 
